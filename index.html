@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>I Love Diana</title>
+    <title>I Love You Diana</title>
     <style>
-      .fun-text {
+      body {
+        margin: 0;
+       
+      }
+       .fun-text {
         font-family: "Comic Sans MS", cursive, sans-serif;
-        font-size: 50px;
+        font-size: 200px;
         text-align: center;
         margin-top: 20px;
         color: #e9ff69;
@@ -44,62 +48,24 @@
         margin: 0 auto;
       }
     </style>
+  
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.131/build/three.module.js",
+          "jsm/": "https://cdn.jsdelivr.net/npm/three@0.131/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body>
-    <div id="container"></div>
+    <script type="module" src="index.js"></script>
+     <div id="container"></div>
     <p class="fun-text">
       <span>I</span> <span>L</span><span>o</span><span>v</span><span>e</span>
       <span>D</span><span>i</span><span>a</span><span>n</span><span>a</span>
     </p>
-
-    <script src="three.min.js"></script>
-    <script src="OBJLoader2.js"></script>
-
-    <script>
-      const container = document.getElementById("container");
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      const renderer = new THREE.WebGLRenderer();
-
-      renderer.setSize(window.innerWidth, window.innerHeight / 2);
-      container.appendChild(renderer.domElement);
-
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(ambientLight);
-
-      const pointLight = new THREE.PointLight(0xffffff, 1);
-      pointLight.position.set(5, 5, 5);
-      scene.add(pointLight);
-
-      const loader = new THREE.OBJLoader2();
-      loader.load(
-        "path/to/your/love.obj",
-        (obj) => {
-          scene.add(obj);
-          obj.position.set(0, 0, 0);
-          obj.scale.set(0.5, 0.5, 0.5);
-        },
-        (xhr) => {
-          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-        },
-        (error) => {
-          console.error("An error happened", error);
-        }
-      );
-
-      camera.position.z = 5;
-
-      const animate = function () {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      };
-
-      animate();
-    </script>
+   
+    
   </body>
 </html>
